@@ -1,15 +1,24 @@
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 function Review() {
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const feedback = useSelector((state) => state.feedbackReducer)
 
     const handleSubmit = () => {
-        
-        history.push("/Success");
+        axios.post('/feedback', feedback)
+        .then((response) => {
+            console.log(response);
+            dispatch({ type: 'RESET_FEEDBACK' });
+            history.push("/Success");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     return (

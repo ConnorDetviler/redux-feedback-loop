@@ -4,23 +4,23 @@ const pool = require('../modules/pool.js');
 const feedbackRouter = express.Router();
 
 // POST
-router.post('/', (req,res) => {
+feedbackRouter.post('/', (req,res) => {
     const feedback = req.body;
     const queryText =
     `INSERT INTO "feedback" ("feeling", "understanding", "support", "comments", "flagged", "date")
-    VALUES ($1, $2, $3, $4, $5, date);`;
+    VALUES ($1, $2, $3, $4, false, NOW()::date);`;
 
     pool.query(queryText,
             [feedback.feeling,
             feedback.understanding,
             feedback.support,
             feedback.comments,
-            false
-            ]
-        ).then((result) => {
+            ])
+        .then((result) => {
             console.log(result);
             res.sendStatus(201);
-        }).catch((error) => {
+        })
+        .catch((error) => {
             console.log(error);
             res.sendStatus(500);
         });
