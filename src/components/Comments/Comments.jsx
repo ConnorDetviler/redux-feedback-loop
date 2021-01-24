@@ -1,11 +1,17 @@
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 function Comments() {
+
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    const [comments, setComments] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('form submitted')
+        dispatch({ type: 'SET_COMMENTS', payload: comments})
         history.push('/Review')
     }
 
@@ -15,7 +21,11 @@ function Comments() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Comments?
-                    <input type="text"/>
+                    <input
+                        type="text"
+                        value={comments}
+                        onChange={(event) => setComments(event.target.value)}
+                    />
                 </label>
                 <input type="submit" value="Next"/>
             </form>

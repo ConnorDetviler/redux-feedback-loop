@@ -24,6 +24,11 @@ const  feedbackReducer = (state={}, action) => {
                 ...state,
                 support: action.payload
             }
+        case 'SET_COMMENTS':
+            return {
+                ...state,
+                comments: action.payload
+            }
         default:
             return state
     }
