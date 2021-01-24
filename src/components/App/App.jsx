@@ -11,6 +11,22 @@ import Success from '../Success/Success.jsx'
 
 function App() {
 
+  const handleInput = (event) => {
+    let input = event.target.value;
+    // following conditional allows user to quickly replace number by entering a different one
+    // limits input to one digit
+    if (input.length > 1){
+        input = input.slice(-1);
+    }
+    // next conditional limits that one digit to numbers 1 thru 5
+    if (input > 5) {
+        input = 5;
+    } else if (input < 1) {
+        input = 1;
+    }
+    return input;
+  }
+
   return (
     <Router>
       <div className='App'>
@@ -18,7 +34,12 @@ function App() {
           <h1 className='App-title'>Feedback!</h1>
           <h4>Don't forget it!</h4>
         </header>
-        <Route path="/" exact component={Feeling} />
+        <Route
+          exact path="/"
+          render={(props) => (
+            <Feeling {...props} handleInput={handleInput} />
+          )}
+        />
         <Route path="/Understanding" component={Understanding} />
         <Route path="/Supported" component={Supported} />
         <Route path="/Comments" component={Comments} />
