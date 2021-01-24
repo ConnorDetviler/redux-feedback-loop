@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
 import Feeling from '../Feeling/Feeling.jsx'
 import Understanding from '../Understanding/Understanding.jsx'
 import Supported from '../Supported/Supported.jsx'
@@ -10,6 +11,7 @@ import Review from '../Review/Review.jsx'
 import Success from '../Success/Success.jsx'
 
 function App() {
+
 
   // form validation function to be passed down to components
   const handleInput = (event) => {
@@ -27,7 +29,6 @@ function App() {
     }
     return input;
   }
-
 
 
   return (

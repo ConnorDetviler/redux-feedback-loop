@@ -15,9 +15,14 @@ function Comments() {
         history.push('/Review')
     }
 
+    const goBack = () => {
+        history.push('/supported');
+    }
+
     return (
         <div>
             <h1>Any comments you want to leave?</h1>
+            <button onClick={goBack} >back</button>
             <form onSubmit={handleSubmit}>
                 <label>
                     Comments?

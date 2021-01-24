@@ -9,6 +9,7 @@ function Understanding({handleInput}) {
 
     const [understanding, setUnderstanding] = useState('');
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if(understanding === '') {
@@ -20,10 +21,14 @@ function Understanding({handleInput}) {
         }
     }
 
+    const goBack = () => {
+        history.push('/');
+    }
 
     return (
     <div>
         <h1>How well are you understanding the content?</h1>
+        <button onClick={goBack} >back</button>
         <form onSubmit={handleSubmit}>
             <label>
                 Understanding?

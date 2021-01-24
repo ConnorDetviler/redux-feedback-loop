@@ -20,9 +20,14 @@ function Supported({handleInput}) {
         }
     }
 
+    const goBack = () => {
+        history.push('/understanding');
+    }
+
     return (
     <div>
         <h1>How well are you being supported?</h1>
+        <button onClick={goBack} >back</button>
         <form onSubmit={handleSubmit}>
             <label>
                 Support?
