@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-function Supported() {
+function Supported({handleInput}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -11,8 +11,13 @@ function Supported() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch({ type: 'SET_SUPPORT', payload: Number(support)})
-        history.push('/Comments')
+        if(support === '') {
+            alert('please enter a number to continue')
+            return;
+        } else {
+            dispatch({ type: 'SET_SUPPORT', payload: Number(support)})
+            history.push('/Comments')
+        }
     }
 
     return (
@@ -24,7 +29,7 @@ function Supported() {
                 <input
                     type="number"
                     value={support}
-                    onChange={(event) => setSupport(event.target.value)}
+                    onChange={(event) => setSupport(handleInput(event))}
                     placeholder="1 - 5"
                 />
             </label>

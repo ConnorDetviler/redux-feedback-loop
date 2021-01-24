@@ -11,6 +11,7 @@ import Success from '../Success/Success.jsx'
 
 function App() {
 
+  // form validation function to be passed down to components
   const handleInput = (event) => {
     let input = event.target.value;
     // following conditional allows user to quickly replace number by entering a different one
@@ -27,6 +28,8 @@ function App() {
     return input;
   }
 
+
+
   return (
     <Router>
       <div className='App'>
@@ -40,8 +43,18 @@ function App() {
             <Feeling {...props} handleInput={handleInput} />
           )}
         />
-        <Route path="/Understanding" component={Understanding} />
-        <Route path="/Supported" component={Supported} />
+        <Route
+          path="/Understanding"
+          render={(props) => (
+            <Understanding {...props} handleInput={handleInput} />
+          )}
+        />
+        <Route
+          path="/Supported"
+          render={(props) => (
+            <Supported {...props} handleInput={handleInput} />
+          )}
+        />
         <Route path="/Comments" component={Comments} />
         <Route path="/Review" component={Review} />
         <Route path="/Success" component={Success} />

@@ -20,21 +20,6 @@ function Feeling({handleInput}) {
         }
     }
 
-    // const handleInput = (event) => {
-    //     let input = event.target.value;
-    //     // following conditional allows user to quickly replace number by entering a different one
-    //     // limits input to one digit
-    //     if (input.length > 1){
-    //         input = input.slice(-1);
-    //     }
-    //     // next conditional limits that one digit to numbers 1 thru 5
-    //     if (input > 5) {
-    //         input = 5;
-    //     } else if (input < 1) {
-    //         input = 1;
-    //     }
-    //     return input;
-    // }
 
     return (
         <div>
@@ -47,7 +32,6 @@ function Feeling({handleInput}) {
                         value={feeling}
                         onChange={(event) => setFeeling(handleInput(event))}
                         placeholder="1 - 5"
-                        maxLength={1}
                     />
                 </label>
                 <input type="submit" value="Next"/>

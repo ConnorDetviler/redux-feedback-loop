@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-function Understanding() {
+function Understanding({handleInput}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -11,8 +11,13 @@ function Understanding() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch({ type: 'SET_UNDERSTANDING', payload: Number(understanding)})
-        history.push('/supported')
+        if(understanding === '') {
+            alert('please enter a number to continue')
+            return;
+        } else {
+            dispatch({ type: 'SET_UNDERSTANDING', payload: Number(understanding)})
+            history.push('/supported')
+        }
     }
 
 
@@ -25,7 +30,7 @@ function Understanding() {
                 <input
                     type="number"
                     value={understanding}
-                    onChange={(event) => setUnderstanding(event.target.value)}
+                    onChange={(event) => setUnderstanding(handleInput(event))}
                     placeholder="1 - 5"
                 />
             </label>
