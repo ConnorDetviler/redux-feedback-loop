@@ -11,7 +11,7 @@ function Feeling() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch({ type: 'SET_FEELING', payload: feeling})
+        dispatch({ type: 'SET_FEELING', payload: Number(feeling)})
         history.push('/understanding')
     }
 
