@@ -19,6 +19,11 @@ const  feedbackReducer = (state={}, action) => {
                 ...state,
                 understanding: action.payload
             }
+        case 'SET_SUPPORT':
+            return {
+                ...state,
+                support: action.payload
+            }
         default:
             return state
     }

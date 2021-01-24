@@ -1,11 +1,17 @@
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 function Supported() {
+
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    const [support, setSupport] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('form submitted')
+        dispatch({ type: 'SET_SUPPORT', payload: Number(support)})
         history.push('/Comments')
     }
 
@@ -15,7 +21,12 @@ function Supported() {
         <form onSubmit={handleSubmit}>
             <label>
                 Support?
-                <input type="number"/>
+                <input
+                    type="number"
+                    value={support}
+                    onChange={(event) => setSupport(event.target.value)}
+                    placeholder="1 - 5"
+                />
             </label>
             <input type="submit" value="Next"/>
         </form>
