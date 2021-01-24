@@ -1,6 +1,6 @@
 function Feeling() {
     return (
-        <p>hello</p>
+        <p>hello from Feeling</p>
     )
 }
 
