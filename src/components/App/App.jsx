@@ -7,6 +7,7 @@ import Understanding from '../Understanding/Understanding.jsx'
 import Supported from '../Supported/Supported.jsx'
 import Comments from '../Comments/Comments.jsx'
 import Review from '../Review/Review.jsx'
+import Success from '../Success/Success.jsx'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Supported" component={Supported} />
         <Route path="/Comments" component={Comments} />
         <Route path="/Review" component={Review} />
+        <Route path="/Success" component={Success} />
       </div>
     </Router>
   );
